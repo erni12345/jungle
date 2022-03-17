@@ -1,0 +1,83 @@
+<!doctype html>
+    <html lang="fr">
+        <head>
+            <meta charset="utf-8">
+            <title>New Post</title>
+            <link rel = "stylesheet" type="text/css" href= '{{ url_for("static", filename="main.css") }}'>
+        </head>
+        <body id="parameters">
+            <nav class="navbar">
+                <div class="nav-wrapper">
+                  <h3 style="color: black">Jungle</h3>
+                  <form action="http://127.0.0.1:5000/search/" method="POST">
+                    <input type="text" name="search" placeholder="Search for users"/>
+                    <input type="submit" hidden />
+                  </form>
+                  <div class="nav-items">
+                    <a href="http://127.0.0.1:5000/home/" class="btn btn-info btn-lg">
+                      <img
+                        src="{{url_for('static', filename='home.PNG')}}"
+                        class="icon"
+                        alt=""
+                      />
+                    </a>
+                    <a href="http://127.0.0.1:5000/newpost/" class="btn btn-info btn-lg">
+                      <img
+                        src="{{url_for('static', filename='add.PNG')}}"
+                        class="icon"
+                        alt=""
+                      />
+                    </a>
+                    <a href="http://127.0.0.1:5000/logout/" class="btn btn-info btn-lg">
+                      <img
+                        src="{{url_for('static', filename='log_out.png')}}"
+                        class="icon"
+                        alt=""
+                      />
+                    </a>
+                    <div class="icon user-profile">
+                      <a
+                        href="http://127.0.0.1:5000/profile/"
+                        class="btn btn-info btn-lg"
+                      >
+                        <img
+                          src="{{url_for('static', filename='prof.png')}}"
+                          class="icon"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+            
+            <div class="add_post" style="padding-top:10vh; align-items: center; text-align: center;">
+                <h2>Add a Post to your Account !</h2>
+                <form  name="post_parameters" class="parameters" action="http://127.0.0.1:5000/uploader/" method="POST" enctype = "multipart/form-data">
+                    <fieldset>
+                    <div>
+                        <label>To get started, choose a title for your post :</label> 
+                        <input class='text' type="text" name='title'>
+                        
+                        </input>              
+                        <label></label
+
+                    </div>  
+                    <br></br>
+                    <div>
+                        <label>Choose what Image for your post !</label> 
+                        <input type = "file" name = "file" />
+                    
+                    </div>
+                    <br>
+                    <div>
+                    <label>Add a description to complement your post !</label> 
+                        <input class='text' type="text" name='Description'>
+                        </input>                  
+                        <input type='submit' class='submit' value='GO !'/>   
+                    </div>
+                    </form>         
+            </div>
+            </body>
+    </html>
+

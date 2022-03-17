@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href='{{ url_for("static", filename="main.css") }}'
+    />
+
+    <title>Home</title>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="nav-wrapper">
+        <h3 style="color: black">Jungle</h3>
+        <form action="http://127.0.0.1:5000/search/" method="POST">
+          <input type="text" name="search" placeholder="Search for users"/>
+          <input type="submit" hidden />
+        </form>
+        <div class="nav-items">
+          <a href="http://127.0.0.1:5000/home/" class="btn btn-info btn-lg">
+            <img
+              src="{{url_for('static', filename='home.PNG')}}"
+              class="icon"
+              alt=""
+            />
+          </a>
+          <a href="http://127.0.0.1:5000/newpost/" class="btn btn-info btn-lg">
+            <img
+              src="{{url_for('static', filename='add.PNG')}}"
+              class="icon"
+              alt=""
+            />
+          </a>
+          <a href="http://127.0.0.1:5000/logout/" class="btn btn-info btn-lg">
+            <img
+              src="{{url_for('static', filename='log_out.png')}}"
+              class="icon"
+              alt=""
+            />
+          </a>
+          <div class="icon user-profile">
+            <a
+              href="http://127.0.0.1:5000/profile/"
+              class="btn btn-info btn-lg"
+            >
+              <img
+                src="{{url_for('static', filename='prof.png')}}"
+                class="icon"
+                alt=""
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="main">
+      {% for x in posts%}
+      <div class="post">
+        <div class="info">
+          <div class="user">
+            <p class="username">@{{x["user"]["username"]}}</p>
+          </div>
+        </div>
+
+        <img
+          src="{{url_for('static', filename=x.path)}}"
+          class="post-image"
+          alt=""
+        />
+
+        <div class="post-content">
+          <div class="reaction-wrapper">
+            <img
+              src="{{url_for('static', filename='like.PNG')}}"
+              class="icon"
+              alt=""
+            />
+            <img
+              src="{{url_for('static', filename='comment.PNG')}}"
+              class="icon"
+              alt=""
+            />
+            <img
+              src="{{url_for('static', filename='send.PNG')}}"
+              class="icon"
+              alt=""
+            />
+            <img
+              src="{{url_for('static', filename='save.PNG')}}"
+              class="save icon"
+              alt=""
+            />
+          </div>
+          <p class="likes">{{x["Title"]}}</p>
+          <div>
+            <p>{{x["Body"]}}</p>
+          </div>
+        </div>
+        <div class="comment-wrapper">
+          <img src="{{url_for('static', filename='smile.PNG')}} class="icon"
+          alt="">
+          <input type="text" class="comment-box" placeholder="Add a comment" />
+          <button class="comment-btn">post</button>
+        </div>
+      </div>
+      {% endfor%}
+    </div>
+  </body>
+</html>

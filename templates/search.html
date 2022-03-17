@@ -1,0 +1,79 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" type="text/css" href= '{{ url_for("static", filename="main.css") }}'>
+
+
+    <title>Search</title>
+</head>
+<div class="title">
+
+<body>
+    <nav class="navbar">
+        <div class="nav-wrapper">
+          <h3 style="color: black">Jungle</h3>
+          <form action="http://127.0.0.1:5000/search/" method="POST">
+            <input type="text" name="search" placeholder="Search for users"/>
+            <input type="submit" hidden />
+          </form>
+          <div class="nav-items">
+            <a href="http://127.0.0.1:5000/home/" class="btn btn-info btn-lg">
+              <img
+                src="{{url_for('static', filename='home.PNG')}}"
+                class="icon"
+                alt=""
+              />
+            </a>
+            <a href="http://127.0.0.1:5000/newpost/" class="btn btn-info btn-lg">
+              <img
+                src="{{url_for('static', filename='add.PNG')}}"
+                class="icon"
+                alt=""
+              />
+            </a>
+            <a href="http://127.0.0.1:5000/logout/" class="btn btn-info btn-lg">
+              <img
+                src="{{url_for('static', filename='log_out.png')}}"
+                class="icon"
+                alt=""
+              />
+            </a>
+            <div class="icon user-profile">
+              <a
+                href="http://127.0.0.1:5000/profile/"
+                class="btn btn-info btn-lg"
+              >
+                <img
+                  src="{{url_for('static', filename='prof.png')}}"
+                  class="icon"
+                  alt=""
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <div class="main">
+        {% for x in results%}
+            <div class="post">
+                <div class="content">
+                    <p class="title">@{{x["username"]}}</p>
+                    <form  method = "POST" action="http://127.0.0.1:5000/follow/">
+                        <input type="hidden" name="id" id="id" value={{x["id"]}}>
+                        <button type="submit" value="Submit">Follow</button>
+                    </form>
+
+                    <form  method = "POST" action="http://127.0.0.1:5000/view_account/">
+                        <input type="hidden" name="id" id="id" value={{x["id"]}}>
+                        <button type="submit" value="Submit">View_Account</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor%}
+    </div>
+</body>
+</html>

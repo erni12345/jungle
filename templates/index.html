@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Jungle.</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href='{{ url_for("static", filename="home.css") }}'
+    />
+  </head>
+  <!DOCTYPE html>
+
+  <body>
+    <div class="form">
+      <form action="http://127.0.0.1:5000/login/" method="POST">
+        <div class="title">Jungle.</div>
+        <div class="input-container ic1">
+          <input
+            id="firstname"
+            class="input"
+            type="text"
+            placeholder="Email"
+            name="email"
+            required
+          />
+          <div class="cut"></div>
+        </div>
+
+        <div class="input-container ic2">
+          <input
+            id="email"
+            class="input"
+            type="password"
+            placeholder="Password"
+            name="password"
+            required
+          />
+          <div class="cut cut-short"></div>
+        </div>
+        <button type="submit" class="submit">Login</button>
+      </form>
+      <button
+        onclick="document.getElementById('id01').style.display='block'"
+        class="signup"
+      >
+        Sign Up
+      </button>
+    </div>
+
+    <div id="id01" class="modal">
+      <span
+        onclick="document.getElementById('id01').style.display='none'"
+        class="close"
+        title="Close Modal"
+        >&times;</span
+      >
+      <form
+        class="modal-content"
+        action="http://127.0.0.1:5000/signup/"
+        method="POST"
+      >
+        <div class="container">
+          <h1>Sign Up</h1>
+          <p>Please fill in this form to create an account.</p>
+          <hr />
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" required />
+
+          <label for="psw"><b>Password</b></label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="pass1"
+            required
+          />
+
+          <label for="psw-repeat"><b>Repeat Password</b></label>
+          <input
+            type="password"
+            placeholder="Repeat Password"
+            name="pass2"
+            required
+          />
+
+          <label for="psw-repeat"><b>Name</b></label>
+          <input type="text" placeholder="Name" name="name" required />
+
+          <label for="psw-repeat"><b>Last Name</b></label>
+          <input
+            type="text"
+            placeholder="Last Name"
+            name="last_name"
+            required
+          />
+
+          <label for="psw-repeat"><b>Age</b></label>
+          <input type="number" placeholder="Age" name="age" required />
+          <br />
+          <br />
+          <br />
+          <label for="psw-repeat"><b>Username</b></label>
+          <input
+            type="text"
+            placeholder="Last Name"
+            name="user_name"
+            required
+          />
+
+          <label for="psw-repeat"><b>Bio</b></label>
+          <input type="text" placeholder="Bio" name="bio" required />
+
+          <div class="clearfix">
+            <button
+              type="button"
+              onclick="document.getElementById('id01').style.display='none'"
+              class="cancelbtn"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="signupbtn">Sign Up</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      // Get the modal
+      var modal = document.getElementById("id01");
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>
